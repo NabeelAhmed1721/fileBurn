@@ -1,0 +1,25 @@
+{
+  "name": "fileburn",
+  "version": "1.0.0",
+  "description": "Simple burner file sharing app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+      "node": "10.14.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NabeelAhmed1721/fileburn.git"
+  },
+  "author": "Nabeel Ahmed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NabeelAhmed1721/fileburn/issues"
+  },
+  "homepage": "https://github.com/NabeelAhmed1721/fileburn#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
