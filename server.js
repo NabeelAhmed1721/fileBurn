@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 //Index Router
 app.get('/',(req,res)=>{
-    res.render('index', {title: 'fileburn.', message: 'Welcome!'});
+    res.render('index', {message: 'Welcome!'});
 });
 
 //404 Router
