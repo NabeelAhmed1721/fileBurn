@@ -1,10 +1,16 @@
 //Nabeel was here :)
+
+//Libraries
 const express = require('express');
 const bodyParser = require('body-parser');
 const favicon = require("serve-favicon");
 const path = require("path");
+
+//App Constants
 const app = express();
 const PORT = process.env.PORT || 5000;
+const index = require('./routes/index');
+
 
 //Force a https connection
 //Made for Heroku
@@ -14,7 +20,7 @@ app.use((req, res, next) => {
         return res.redirect('https://' + req.get('host') + req.url);
     }
     next();
-});
+    })
 }
 
 //Server Initializes
@@ -25,14 +31,7 @@ app.use(express.static(__dirname + '/public')); // static public folder
 app.use(favicon(path.join(__dirname,'public','favicon.ico'))); // favicon routing
 
 //Index Router
-app.get('/',(req,res)=>{
-    let ts = Date.now();
-    let date_ob = new Date(ts);
-    let date = date_ob.getDate();
-    let month = date_ob.getMonth() + 1;
-    let year = date_ob.getFullYear();
-    res.render('index', {message: 'Welcome! '+("It is "+year + "-" + month + "-" + date)});
-});
+app.use('/', index);
 
 //404 Router
 app.use((req, res, next) => {
