@@ -13,9 +13,10 @@ app.use((req, res, next) => {
 });
 
 //Server Initializes
-app.set('view engine', 'pug'); //view engine set
+app.set('view engine', 'pug'); // view engine set
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+app.use(express.static(__dirname + '/public')); // static public folder
 
 //Index Router
 app.get('/',(req,res)=>{
