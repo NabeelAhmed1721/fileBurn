@@ -1,5 +1,8 @@
+//Nabeel was here :)
 const express = require('express');
 const bodyParser = require('body-parser');
+const favicon = require("serve-favicon");
+const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -17,6 +20,7 @@ app.set('view engine', 'pug'); // view engine set
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(express.static(__dirname + '/public')); // static public folder
+app.use(favicon(path.join(__dirname,'public','favicon.ico'))); // favicon routing
 
 //Index Router
 app.get('/',(req,res)=>{
