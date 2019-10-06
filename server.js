@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(express.static(__dirname + '/public')); // static public folder
 app.use(favicon(path.join(__dirname,'public','favicon.ico'))); // favicon routing
 
-//Index Router
+//Index and Upload Router
 app.use('/', index);
 app.use('/', upload);
 
