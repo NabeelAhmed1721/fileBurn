@@ -9,7 +9,10 @@ const path = require("path");
 //App Constants
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+//Routers
 const index = require('./routes/index');
+const upload = require('./routes/upload');
 
 
 //Force a https connection
@@ -23,7 +26,7 @@ app.use((req, res, next) => {
     })
 }
 
-//Server Initializes
+//Server Init
 app.set('view engine', 'pug'); // view engine set
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
@@ -32,6 +35,7 @@ app.use(favicon(path.join(__dirname,'public','favicon.ico'))); // favicon routin
 
 //Index Router
 app.use('/', index);
+app.use('/', upload);
 
 //404 Router
 app.use((req, res, next) => {

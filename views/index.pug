@@ -1,5 +1,8 @@
 extends components/header.pug
 
-block welcome
+block header
     h3=message
     h3 We are under-construction right now!
+    a(href="/upload") upload
+    if response
+        p=response
