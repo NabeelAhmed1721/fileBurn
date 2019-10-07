@@ -1,9 +1,9 @@
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
-const cookieParser = require('cookie-parser');
 const router = express.Router();
 
+const cookieParser = require('cookie-parser');
 router.use(cookieParser());
 
 //Storage Engine
@@ -23,7 +23,7 @@ const upload = multer({
 }).single('fileUpload');
 
 router.get('/upload', (req, res)=>{
-    res.clearCookie('name');
+    res.clearCookie('accessTicket');
     res.render('upload');
 });
 

@@ -1,16 +1,18 @@
 const express = require('express');
 const fs = require('fs');
 const router = express.Router();
-
 const directoryPath = './public/uploads/';
-const uploadList = [];
 
-fs.readdirSync(directoryPath).forEach(file => {
-    uploadList.push(file);
-});
+const cookieParser = require('cookie-parser');
+router.use(cookieParser());
 
 //Index ~ Homepage
 router.get('/', (req, res)=>{
+    res.clearCookie('accessTicket');
+    const uploadList = [];
+    fs.readdirSync(directoryPath).forEach(file => {
+        uploadList.push(file);
+    });
     let ts = Date.now();
     let date_ob = new Date(ts);
     let date = date_ob.getDate();
