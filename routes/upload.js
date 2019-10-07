@@ -1,7 +1,10 @@
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
+const cookieParser = require('cookie-parser');
 const router = express.Router();
+
+router.use(cookieParser());
 
 //Storage Engine
 const storage = multer.diskStorage({
@@ -20,6 +23,7 @@ const upload = multer({
 }).single('fileUpload');
 
 router.get('/upload', (req, res)=>{
+    res.clearCookie('name');
     res.render('upload');
 });
 
@@ -31,7 +35,8 @@ router.post('/upload', (req, res)=>{
             if(req.file === undefined) {
                 res.render('upload', {response: "Please Upload a file"});
             } else {
-                res.render('upload', {response: "Image Uploaded!", link: req.file.filename});
+                res.cookie('accessTicket', req.file.filename, {expire: new Date() + 300000});
+                res.redirect('success');
             }
         }
     })

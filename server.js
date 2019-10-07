@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 5000;
 //Routers
 const index = require('./routes/index');
 const upload = require('./routes/upload');
+const success = require('./routes/success');
 
 
 //Force a https connection
@@ -36,6 +37,7 @@ app.use(favicon(path.join(__dirname,'public','favicon.ico'))); // favicon routin
 //Index and Upload Router
 app.use('/', index);
 app.use('/', upload);
+app.use('/', success);
 
 //404 Router
 app.use((req, res, next) => {
