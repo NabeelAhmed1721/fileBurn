@@ -5,7 +5,8 @@ block header
     form(action='/upload', method="POST", enctype="multipart/form-data")
         input(type="file" name="fileUpload" accept="image/*")
         input(type="submit", value="Upload")
-    if response && link
+    if response
         p=response
+    if link
         a(target="_blank" href="/uploads/"+link) Uploaded Here!
 
