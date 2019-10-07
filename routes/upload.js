@@ -35,7 +35,8 @@ router.post('/upload', (req, res)=>{
             if(req.file === undefined) {
                 res.render('upload', {response: "Please Upload a file"});
             } else {
-                res.cookie('accessTicket', req.file.filename, {expire: new Date() + 300000});
+                console.log(req.file);
+                res.cookie('accessTicket', (req.file.filename).toString(), {expire: new Date() + 300000});
                 res.redirect('success');
             }
         }
