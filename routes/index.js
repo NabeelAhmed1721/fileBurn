@@ -2,7 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const router = express.Router();
 
-const directoryPath = '/public/uploads/';
+const directoryPath = './public/uploads/';
 const uploadList = [];
 
 fs.readdirSync(directoryPath).forEach(file => {
@@ -18,7 +18,7 @@ router.get('/', (req, res)=>{
     let year = date_ob.getFullYear();
     res.render('index', {
         message: 'Welcome! '+("It is "+year + "-" + month + "-" + date),
-        uploadList: uploadList//.filter(upload => upload != "blank")
+        uploadList: uploadList.filter(upload => upload != "blank") //Make sure blank doesn't get added to list
     });
 });
 
