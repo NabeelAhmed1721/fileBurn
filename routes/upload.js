@@ -23,7 +23,10 @@ const upload = multer({
 }).single('fileUpload');
 
 router.get('/upload', (req, res)=>{
-    res.clearCookie('accessTicket');
+    //res.clearCookie('accessTicket');
+    res.clearCookie('accessDataNewName');
+    res.clearCookie('accessDataOriginalName');
+    res.clearCookie('accessDataSize');
     res.render('upload');
 });
 
@@ -36,7 +39,11 @@ router.post('/upload', (req, res)=>{
                 res.render('upload', {response: "Please Upload a file"});
             } else {
                 console.log(req.file);
-                res.cookie('accessTicket', (req.file.filename).toString(), {expire: new Date() + 300000});
+                //Generate a unique cookie for Authenticity. -> Random HEX (do it soon)
+                //res.cookie('accessTicket', (req.file.filename).toString(), {expire: new Date() + 300000});
+                res.cookie('accessDataNewName', (req.file.filename).toString(), {expire: new Date() + 300000});
+                res.cookie('accessDataOriginalName', (req.file.originalname).toString(), {expire: new Date() + 300000});
+                res.cookie('accessDataSize', (req.file.size).toString(), {expire: new Date() + 300000});
                 res.redirect('success');
             }
         }

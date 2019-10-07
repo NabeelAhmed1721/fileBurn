@@ -2,5 +2,10 @@ extends components/header.pug
 
 block header
     h2 Congrats! Your file was uploaded!
-    h2=ticket
-    h3=data
+    a(href=link) Click Here for Link
+    div(id="data")
+        h4 New Name: #{newName}
+        h4 Original Name: #{originalName}
+        h4 Size: #{size}
+
+    script.

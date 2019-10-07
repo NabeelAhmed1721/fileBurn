@@ -3,7 +3,7 @@ extends components/header.pug
 block header
     h1 upload
     form(action='/upload', method="POST", enctype="multipart/form-data")
-        input(type="file" name="fileUpload" accept="image/*")
+        input(type="file" name="fileUpload")
         input(type="submit", value="Upload")
     if response
         p=response

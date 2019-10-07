@@ -8,7 +8,10 @@ router.use(cookieParser());
 
 //Index ~ Homepage
 router.get('/', (req, res)=>{
-    res.clearCookie('accessTicket');
+    //res.clearCookie('accessTicket');
+    res.clearCookie('accessDataNewName');
+    res.clearCookie('accessDataOriginalName');
+    res.clearCookie('accessDataSize');
     const uploadList = [];
     fs.readdirSync(directoryPath).forEach(file => {
         uploadList.push(file);
