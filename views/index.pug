@@ -6,3 +6,6 @@ block header
     a(href="/upload") upload
     if response
         p=response
+    ul
+        each upload in uploadList.length ? uploadList : ['There are no uploads']
+            li= upload
