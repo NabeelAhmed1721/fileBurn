@@ -5,6 +5,7 @@ const router = express.Router();
 
 const cookieParser = require('cookie-parser');
 router.use(cookieParser());
+const cookieExpireTime = 15000;
 
 //Storage Engine
 const storage = multer.diskStorage({
@@ -41,9 +42,9 @@ router.post('/upload', (req, res)=>{
                 console.log(req.file);
                 //Generate a unique cookie for Authenticity. -> Random HEX (do it soon)
                 //res.cookie('accessTicket', (req.file.filename).toString(), {expire: new Date() + 300000});
-                res.cookie('accessDataNewName', (req.file.filename).toString(), {expire: new Date() + 300000});
-                res.cookie('accessDataOriginalName', (req.file.originalname).toString(), {expire: new Date() + 300000});
-                res.cookie('accessDataSize', (req.file.size).toString(), {expire: new Date() + 300000});
+                res.cookie('accessDataNewName', (req.file.filename).toString(), {expires: new Date(Date.now() + cookieExpireTime)});
+                res.cookie('accessDataOriginalName', (req.file.originalname).toString(), {expires: new Date(Date.now() + cookieExpireTime)});
+                res.cookie('accessDataSize', (req.file.size).toString(), {expires: new Date(Date.now() + cookieExpireTime)});
                 res.redirect('success');
             }
         }
