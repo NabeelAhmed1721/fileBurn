@@ -2,10 +2,10 @@ extends components/header.pug
 
 block header
     h2 Congrats! Your file was uploaded!
-    a(href=link) Click Here for Link
+    a(target="_blank" href=link) Click Here for Link
     div(id="data")
         h4 New Name: #{newName}
         h4 Original Name: #{originalName}
-        h4 Size: #{size}
+        h4(id="dataSize") Size: #{size}
 
-    script.
+    script(src="/scripts/humanReadableSize.js")
