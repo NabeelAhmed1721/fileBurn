@@ -6,7 +6,7 @@ block headerIndex
             .info-tab
                 .info-tab-container
                     .info-tab-logo
-                        a(href='index.html')
+                        a(href='/')
                             img(src='/assets/fileburnLogo.png')
                     .info-tab-desc
                         | A&nbsp;
@@ -19,7 +19,6 @@ block headerIndex
                 form(method='post' action="/" enctype="multipart/form-data")
                     .upload-tab-form-container-border
                         .upload-tab-container
-                            h1=response
                             .upload-tab-form
                                 .upload-tab-form-title
                                     label#filenamePreview
@@ -30,4 +29,9 @@ block headerIndex
                                         |  to upload or drag and drop files.
                                 .upload-tab-form-submit
                                     input.upload-tab-form-submit-btn(type='submit' value='Upload')
+                                if response
+                                    .upload-tab-form-error-container
+                                        .upload-tab-form-error
+                                            .upload-tab-form-error-style !
+                                            .upload-tab-form-error-title=response
     script(src="/scripts/fileUploadValidation.js")

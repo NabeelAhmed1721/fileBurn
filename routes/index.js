@@ -38,7 +38,7 @@ router.post('/', (req, res)=>{
         } else {
             if(req.file === undefined) {
                 console.log(req.file);
-                res.render('index', {response: "Please Upload a file"});
+                res.render('index', {response: "Select a file!"});
             } else {
                 console.log(req.file);
                 //Generate a unique cookie for Authenticity. -> Random HEX (do it soon)
