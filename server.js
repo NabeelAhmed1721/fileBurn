@@ -12,7 +12,6 @@ const PORT = process.env.PORT || 5000;
 
 //Routers
 const index = require('./routes/index');
-const upload = require('./routes/upload');
 const success = require('./routes/success');
 
 
@@ -34,9 +33,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(express.static(__dirname + '/public')); // static public folder
 app.use(favicon(path.join(__dirname,'public','favicon.ico'))); // favicon routing
 
-//Index and Upload Router
+//Index and Success Router
 app.use('/', index);
-app.use('/', upload);
 app.use('/', success);
 
 //404 Router

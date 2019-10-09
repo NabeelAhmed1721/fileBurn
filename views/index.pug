@@ -1,11 +1,33 @@
-extends components/header.pug
+extends components/headerIndex.pug
 
-block header
-    h3=message
-    h3 We are under-construction right now!
-    a(href="/upload") upload
-    if response
-        p=response
-    ul
-        each upload in uploadList.length ? uploadList : ['There are no uploads']
-            li= upload
+block headerIndex
+    section#main
+        .main-container
+            .info-tab
+                .info-tab-container
+                    .info-tab-logo
+                        a(href='index.html')
+                            img(src='/assets/fileburnLogo.png')
+                    .info-tab-desc
+                        | A&nbsp;
+                        span(style='color:#F26600') simple
+                        |  burner file sharing app.
+                    .info-tab-footer
+                        a(target='_blank' href='https://github.com/NabeelAhmed1721/')
+                            | Nothing More. Nothing Less.
+            .upload-tab
+                form(method='post' action="/" enctype="multipart/form-data")
+                    .upload-tab-form-container-border
+                        .upload-tab-container
+                            h1=response
+                            .upload-tab-form
+                                .upload-tab-form-title
+                                    label#filenamePreview
+                                    #fileUploadTitle
+                                        label.upload-tab-form-upload
+                                            span(style='color:#F26600') Click
+                                            input#formUploadInput(onchange='fileUploadValidate();' type='file' name="fileUpload")
+                                        |  to upload or drag and drop files.
+                                .upload-tab-form-submit
+                                    input.upload-tab-form-submit-btn(type='submit' value='Upload')
+    script(src="/scripts/fileUploadValidation.js")
